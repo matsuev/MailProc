@@ -14,7 +14,7 @@ import (
 
 func main() {
 	// Перенаправление логов в файл
-	// создать файл лога, установить права доступв
+	// создать файл лога, установить права доступа
 	l, err := os.OpenFile("/var/log/klshmail.log", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0644)
 	logFatal(err)
 	defer l.Close()
@@ -39,12 +39,12 @@ func main() {
 	// Разбор сообщения
 	to, err := mail.ParseAddress(m.Header.Get("to"))
 	logFatal(err)
-	log.Println("To:", to.String())
+	log.Printа("To: %s <%s>", to.Name, to.Address)
 
 	// Разбор заголовков сообщения
 	from, err := mail.ParseAddress(m.Header.Get("from"))
 	logFatal(err)
-	log.Println("From:", from.String())
+	log.Println("From: %s <%s>", from.Name, from.Address)
 
 	if to.Address == "" || from.Address == "" {
 		log.Fatalln("Empty address. Reject message.")
@@ -66,7 +66,7 @@ func main() {
 		SELECT list.id, list.prefix
 		FROM list
 		WHERE LOWER(list.email)=LOWER(?)
-    AND list.active
+		AND list.active
 		`, to.Address).Scan(&lid, &lprefix)
 	if err != nil {
 		log.Println("No list with address:", to.Address)
@@ -76,7 +76,7 @@ func main() {
 	// Запрос на проверку прав пользователя на отправку сообщений в список
 	var uid uint64
 	err = db.QueryRow(`
-    SELECT user.id
+		SELECT user.id
 		FROM user
 		INNER JOIN user_list
 		ON (
@@ -84,8 +84,8 @@ func main() {
 			user_list.canwrite AND
 			user_list.lid=?
 		)
-    WHERE LOWER(user.email)=LOWER(?)
-    AND user.active
+		WHERE LOWER(user.email)=LOWER(?)
+		AND user.active
 		`, lid, from.Address).Scan(&uid)
 	if err != nil {
 		log.Println("User", from.Address, "can't send messages to", to.Address)
@@ -100,13 +100,6 @@ func main() {
 			newmessage += k + ": " + h + "\r\n"
 		}
 	}
-
-	// from.Name = "[" + lname + "] " + from.Name
-	// from.Address = to.Address
-	// newmessage += "From: " + from.String() + "\r\n"
-	// newmessage += "Reply-To: <" + from.Address + ">\r\n"
-	// newmessage += "X-KLSH-Sender: " + uid + "\r\n"
-	// newmessage += "\r\n"
 
 	from.Name = lprefix + " " + from.Name
 	from.Address = to.Address
@@ -125,7 +118,6 @@ func main() {
 
 	// Отправка сообщения
 	c.Mail(to.Address)
-	// c.Rcpt(lid + "@klshmail")
 	c.Rcpt(fmt.Sprintf("%v@klshmail", lid))
 
 	wc, err := c.Data()
@@ -154,4 +146,3 @@ func logFatal(e error) {
 		log.Fatalln(e)
 	}
 }
-
