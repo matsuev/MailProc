@@ -39,12 +39,12 @@ func main() {
 	// Разбор сообщения
 	to, err := mail.ParseAddress(m.Header.Get("to"))
 	logFatal(err)
-	log.Printа("To: %s <%s>", to.Name, to.Address)
+	log.Printf("To: %s <%s>\n", to.Name, to.Address)
 
 	// Разбор заголовков сообщения
 	from, err := mail.ParseAddress(m.Header.Get("from"))
 	logFatal(err)
-	log.Println("From: %s <%s>", from.Name, from.Address)
+	log.Printf("From: %s <%s>\n", from.Name, from.Address)
 
 	if to.Address == "" || from.Address == "" {
 		log.Fatalln("Empty address. Reject message.")
