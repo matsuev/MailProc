@@ -66,7 +66,7 @@ func main() {
 	err = db.QueryRow(`
 		SELECT list.id, list.prefix
 		FROM list
-		WHERE LOWER(list.email)=LOWER(?)
+		WHERE LCASE(list.email)=TRIM(LCASE(?))
 		AND list.active
 		`, to.Address).Scan(&lid, &lprefix)
 	if err != nil {
@@ -80,12 +80,11 @@ func main() {
 		SELECT user.id
 		FROM user
 		INNER JOIN user_list
-		ON (
-			user.id=user_list.uid AND
-			user_list.canwrite AND
-			user_list.lid=?
+		ON (user_list.lid=?
+			AND user.id=user_list.uid
+			AND user_list.canwrite
 		)
-		WHERE LOWER(user.email)=LOWER(?)
+		WHERE LCASE(user.email)=TRIM(LCASE(?))
 		AND user.active
 		`, lid, from.Address).Scan(&uid)
 	if err != nil {
