@@ -102,8 +102,9 @@ func main() {
 		}
 	}
 
+	
+	from.Name = fmt.Sprintf("%s %s <%s>", lprefix, from.Name, from.Address)
 	from.Address = to.Address
-	from.Name = fmt.Sprintf("%s %s", lprefix, from.Name)
 	newmessage += fmt.Sprintf("From: %s\r\n", from.String())
 	newmessage += fmt.Sprintf("Reply-To: <%s>\r\n", from.Address)
 	newmessage += fmt.Sprintf("X-KLSH-Sender: %v\r\n", uid)
