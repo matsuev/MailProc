@@ -28,6 +28,7 @@ func main() {
 		"Message-Id",
 		"Subject",
 		"Content-Type",
+		"Content-Transfer-Encoding",
 		"In-Reply-To",
 		"References",
 	}
