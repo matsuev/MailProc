@@ -7,6 +7,7 @@ import (
 	"io"
 	"log"
 	"net/mail"
+	"net/smtp"
 	"os"
 	"strconv"
 	"strings"
@@ -37,14 +38,14 @@ func main() {
 		"References",
 	}
 
-	r, err := os.Open("./processor/testmsg.eml")
-	if err != nil {
-		log.Fatal(err)
-	}
-	m, err := message.Read(r)
+	// r, err := os.Open("./processor/testmsg.eml")
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+	// m, err := message.Read(r)
 
 	// Читаем сообщение из стандартного ввода
-	// m, err := message.Read(os.Stdin)
+	m, err := message.Read(os.Stdin)
 	logFatal(err)
 	log.Println("New message accepted...")
 
@@ -135,38 +136,39 @@ func main() {
 	}
 	w.Close()
 
-	log.Println(b.String())
+	// log.Println(b.String())
 
-	// // Подключение к SMTP серверу
-	// c, err := smtp.Dial("127.0.0.1:25")
-	// if err != nil {
-	// 	log.Println("SMTP connection error")
-	// 	log.Fatal(err)
-	// }
-	// defer c.Close()
-	//
-	// // Отправка сообщения
-	// c.Mail(to.Address)
-	// c.Rcpt(fmt.Sprintf("%v@klshmail", lid))
-	//
-	// wc, err := c.Data()
-	// logFatal(err)
-	// defer wc.Close()
-	//
-	// // Отправка заголовков сообщения
+	// Подключение к SMTP серверу
+	c, err := smtp.Dial("127.0.0.1:25")
+	if err != nil {
+		log.Println("SMTP connection error")
+		log.Fatal(err)
+	}
+	defer c.Close()
+
+	// Отправка сообщения
+	c.Mail(to.Address)
+	c.Rcpt(fmt.Sprintf("%v@klshmail", lid))
+
+	wc, err := c.Data()
+	logFatal(err)
+	defer wc.Close()
+
+	// Отправка заголовков сообщения
 	// if _, err = wc.Write([]byte(newmessage)); err != nil {
 	// 	log.Println("SMTP send headers error")
 	// 	log.Fatalln(err)
 	// }
-	//
-	// // Отправка тела сообщения
-	// if _, err = io.Copy(wc, m.Body); err != nil {
-	// 	log.Println("SMTP send body error")
-	// 	log.Fatalln(err)
-	// }
-	//
-	// // Завершение работы
-	// log.Println("Message processing done.")
+
+	// Отправка тела сообщения
+	br := bytes.NewReader(b.Bytes())
+	if _, err = io.Copy(wc, br); err != nil {
+		log.Println("SMTP send body error")
+		log.Fatalln(err)
+	}
+
+	// Завершение работы
+	log.Println("Message processing done.")
 
 }
 
