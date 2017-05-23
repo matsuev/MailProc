@@ -208,7 +208,7 @@ func transform(w *message.Writer, e *message.Entity, sender *mail.Address) error
 		}
 		return nil
 	} else {
-		// e.Header.Add(key, value)
+		e.Header.Add("Content-Transfer-Encoding", "base64")
 		body := e.Body
 		// var newLine string
 		// if strings.HasPrefix(e.Header.Get("Content-Type"), "text/plain") {
@@ -220,7 +220,7 @@ func transform(w *message.Writer, e *message.Entity, sender *mail.Address) error
 		// body = io.MultiReader(strings.NewReader(newLine), body)
 
 		rb := make([]byte, 0)
-		body.Read(rb)
+		io.ReadFull(body, rb)
 
 		encoder := base64.NewEncoder(base64.StdEncoding, w)
 		_, err := encoder.Write(rb)
