@@ -21,8 +21,8 @@ func main() {
 	// создать файл лога, установить права доступа
 	// l, err := os.OpenFile("./klshmail.log", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0644)
 	// l, err := os.OpenFile("/var/log/klshmail.log", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0644)
-	logFatal(err)
-	defer l.Close()
+	// logFatal(err)
+	// defer l.Close()
 
 	// log.SetOutput(l)
 
