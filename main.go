@@ -9,9 +9,12 @@ import (
 	"net/mail"
 	"net/smtp"
 	"os"
+	"strconv"
 	"strings"
 
-	message "github.com/emersion/go-message"
+	message "github.com/matsuev/go-message"
+	charset "github.com/matsuev/go-message/charset"
+
 	_ "github.com/go-sql-driver/mysql"
 )
 
@@ -30,31 +33,24 @@ func main() {
 	hh := []string{
 		"MIME-Version",
 		"Message-Id",
-		"Subject",
 		"Content-Type",
 		"Content-Transfer-Encoding",
 		"In-Reply-To",
 		"References",
+		"Subject",
 	}
 
-	// r, err := os.Open("./processor/testmsg.eml")
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-	// m, err := message.Read(r)
-
 	// Читаем сообщение из стандартного ввода
-	m, err := message.Read(os.Stdin)
+	msg, err := message.Read(os.Stdin)
 	logFatal(err)
 	log.Println("New message accepted...")
 
-	// Разбор сообщения
-	to, err := mail.ParseAddress(m.Header.Get("to"))
+	// Разбор заголовков сообщения
+	to, err := getMailHeader("To", msg.Header)
 	logFatal(err)
 	log.Printf("To: %s <%s>\n", to.Name, to.Address)
 
-	// Разбор заголовков сообщения
-	from, err := mail.ParseAddress(m.Header.Get("from"))
+	from, err := getMailHeader("From", msg.Header)
 	logFatal(err)
 	log.Printf("From: %s <%s>\n", from.Name, from.Address)
 
@@ -104,26 +100,12 @@ func main() {
 	}
 
 	// Формирование заголовков нового сообщения
-	var newmessage string
-
-	for _, k := range hh {
-		if h := m.Header.Get(k); h != "" {
-			newmessage += k + ": " + h + "\r\n"
+	newHeader := make(message.Header)
+	for _, hk := range hh {
+		if hv := msg.Header.Get(hk); hv != "" {
+			newHeader.Set(hk, hv)
 		}
 	}
-
-	var newHeader message.Header
-	newHeader = make(message.Header)
-	//
-	// dec := new(mime.WordDecoder)
-	//
-	// for _, k := range hh {
-	// 	if h := m.Header.Get(k); h != "" {
-	// 		// newHeader[k] := h
-	// 		dh, _ := dec.Decode(h)
-	// 		newHeader.Set(k, dh)
-	// 	}
-	// }
 
 	sender := new(mail.Address)
 	sender.Name = from.Name
@@ -131,30 +113,21 @@ func main() {
 
 	from.Name = fmt.Sprintf("%s", lprefix)
 	from.Address = to.Address
-	// newHeader.Set("From", from.String())
-	// newHeader.Set("Reply-To", to.Address)
-	// newHeader.Set("X-KLSH-Sender", strconv.FormatUint(uid, 10))
 
-	newmessage += fmt.Sprintf("From: %s\r\n", from.String())
-	newmessage += fmt.Sprintf("Reply-To: <%s>\r\n", to.Address)
-	newmessage += fmt.Sprintf("X-KLSH-Sender: %v\r\n", uid)
-	newmessage += "\r\n"
+	newHeader.Set("From", from.String())
+	newHeader.Set("Reply-To", to.Address)
+	newHeader.Set("X-KLSH-Sender", strconv.FormatUint(uid, 10))
 
 	var b bytes.Buffer
-	// w := new(message.Writer)
 	w, err := message.CreateWriter(&b, newHeader)
 	if err != nil {
 		log.Fatal(err)
 	}
+	defer w.Close()
 
-	io.Copy(w, strings.NewReader(newmessage))
-
-	if err := transform(w, m, sender); err != nil {
+	if err := transform(w, msg, sender); err != nil {
 		log.Fatal(err)
 	}
-	w.Close()
-
-	// log.Println(b.String())
 
 	// Подключение к SMTP серверу
 	c, err := smtp.Dial("127.0.0.1:25")
@@ -164,7 +137,7 @@ func main() {
 	}
 	defer c.Close()
 
-	// Отправка сообщения
+	// Заголовки для отправки
 	c.Mail(to.Address)
 	c.Rcpt(fmt.Sprintf("%v@klshmail", lid))
 
@@ -172,13 +145,7 @@ func main() {
 	logFatal(err)
 	defer wc.Close()
 
-	// Отправка заголовков сообщения
-	// if _, err = wc.Write([]byte(newmessage)); err != nil {
-	// 	log.Println("SMTP send headers error")
-	// 	log.Fatalln(err)
-	// }
-
-	// Отправка тела сообщения
+	// Отправка сообщения
 	br := bytes.NewReader(b.Bytes())
 	if _, err = io.Copy(wc, br); err != nil {
 		log.Println("SMTP send body error")
@@ -235,4 +202,14 @@ func transform(w *message.Writer, e *message.Entity, sender *mail.Address) error
 		_, err := io.Copy(w, body)
 		return err
 	}
+}
+
+func getMailHeader(k string, h message.Header) (*mail.Address, error) {
+	dh, err := charset.DecodeHeader(h.Get(k))
+	if err != nil {
+		return nil, err
+	}
+
+	rh, err := mail.ParseAddress(dh)
+	return rh, err
 }

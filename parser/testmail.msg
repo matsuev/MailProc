@@ -1,0 +1,147 @@
+Received: from mxfront6j.mail.yandex.net ([127.0.0.1])
+	by mxfront6j.mail.yandex.net with LMTP id NP1nZNKd
+	for <pedsovet@klsh.ru>; Thu, 18 May 2017 06:19:33 +0300
+Received: from mxout3.rambler.ru (mxout3.rambler.ru [81.19.78.102])
+	by mxfront6j.mail.yandex.net (nwsmtp/Yandex) with ESMTP id XqN45E8BQ8-JW2iKt1n;
+	Thu, 18 May 2017 06:19:32 +0300
+X-Yandex-Front: mxfront6j.mail.yandex.net
+X-Yandex-TimeMark: 1495077572
+Authentication-Results: mxfront6j.mail.yandex.net; spf=pass (mxfront6j.mail.yandex.net: domain of rambler.ru designates 81.19.78.102 as permitted sender, rule=[ip4:81.19.78.96/27]) smtp.mail=kechinav@rambler.ru; dkim=pass header.i=@rambler.ru
+X-Yandex-Spam: 1
+Received: from saddam4.rambler.ru (saddam4.rambler.ru [10.32.16.4])
+	by mxout3.rambler.ru (Postfix) with ESMTP id 976537C02DB
+	for <pedsovet@klsh.ru>; Thu, 18 May 2017 06:50:03 +0300 (MSK)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=rambler.ru; s=mail;
+	t=1495079403; bh=mR42KPXjTfCrxu3QfCLnWd6UocZXmT1ysi+R9tw6bug=;
+	h=From:To:Reply-To:Subject:Date:In-Reply-To:References;
+	b=FOUv3Ms1NyP/kmq7nbKaGEgIdHjPZtlbH1EVp8z6C8jjQPez/QNuFXHkoGvGq7mRe
+	 z1Z+aUR/iKPBRZCtJ20mvMWejiVJvlEZAtFOBhE/HpBEWievRIqMYfikOEFXe+zm79
+	 GBVg9pnrhLE0VSFcrVW6VSKsXdK/QcSxmtiZFwQ0=
+Received: from localhost.localdomain (localhost [127.0.0.1])
+	by saddam4.rambler.ru (Postfix) with ESMTP id 84449300AE65
+	for <pedsovet@klsh.ru>; Thu, 18 May 2017 06:19:32 +0300 (MSK)
+Received: from [89.22.176.219] by mail.rambler.ru with HTTP; Thu, 18 May 2017 06:19:32 +0300
+From: =?koi8-r?B?4c7E0sXKIOvF3snO?= <kechinav@rambler.ru>
+To: "Pedsovet" <pedsovet@klsh.ru>
+Reply-To: =?koi8-r?B?4c7E0sXKIOvF3snO?= <kechinav@rambler.ru>
+Subject: =?koi8-r?B?UkU6IPXUz97Oxc7JxSDBxNLF08/XIMTM0SDSwdPT2czLyQ==?=
+Date: Thu, 18 May 2017 06:19:32 +0300
+Content-Transfer-Encoding: 7bit
+Content-Type: multipart/alternative; boundary="_----------=_14950775721008420"
+In-Reply-To: <CAHyCNfDoNQA4qip02KdXKM-2KgFUwmy+Di4aHNnvFCrdxd1o9Q@mail.gmail.com>
+Message-Id: <1495077572.208172.10084.23728@mail.rambler.ru>
+MIME-Version: 1.0
+References: <CAHyCNfDoNQA4qip02KdXKM-2KgFUwmy+Di4aHNnvFCrdxd1o9Q@mail.gmail.com> <CAGBPH4=YOT=pmo6kgk9R0vAWQTgLeGa3KXynrdTP-oG0b3H=8A@mail.gmail.com> <CAHyCNfCiZHDAjNkc0SsajgoJFGJ_d0+jhuU7Qq9hR46OYPrQ0Q@mail.gmail.com> <CAGBPH4ms7Xs6+YR_9jjb2EURK1ETexh96tHXm-28Lo5JuRwfdQ@mail.gmail.com>
+X-Mailer: Rambler WebMail, http://mail.rambler.ru/
+X-Rambler-User: kechinav@rambler.ru/89.22.176.219
+Return-Path: kechinav@rambler.ru
+X-Yandex-Forward: 81472acc60bf7aa0ea153f1c9e37eb22
+
+
+This is a multi-part message in MIME format.
+
+--_----------=_14950775721008420
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"; format="flowed"
+
+=D0=9D=D0=B0=D0=B9=D0=B4=D0=B5=D0=BD=D0=BE=D0=B2=D0=B0 =D0=BC=D0=BE=D0=B6=
+=D0=BD=D0=BE =D0=B2=D1=8B=D1=87=D0=B5=D1=80=D0=BA=D0=BD=D1=83=D1=82=D1=8C
+
+  =D0=94=D1=80=D1=83=D0=B7=D1=8C=D1=8F!
+  =D0=9F=D1=80=D0=BE=D1=81=D1=8C=D0=B1=D0=B0 =D1=83=D1=82=D0=BE=D1=87=D0=BD=
+=D0=B8=D1=82=D1=8C =D1=8D=D0=BB=D0=B5=D0=BA=D1=82=D1=80=D0=BE=D0=BD=D0=BD=
+=D1=8B=D0=B5 =D0=B0=D0=B4=D1=80=D0=B5=D1=81=D0=B0 =D1=81=D0=BB=D0=B5=D0=B4=
+=D1=83=D1=8E=D1=89=D0=B8=D1=85 =D1=81=D0=BE=D1=82=D1=80=D1=83=D0=B4=D0=BD=
+=D0=B8=D0=BA=D0=BE=D0=B2 (=D0=B8 =D0=BE=D0=B4=D0=BD=D0=BE=D0=B3=D0=BE =D0=
+=B7=D0=BE=D0=BD=D0=B4=D0=B5=D1=80=D0=B0):
+  =D0=91=D1=83=D0=BB=D0=B0=D0=BD=D0=BE=D0=B2=D0=B0 =D0=9D=D0=B0=D1=81=D1=82=
+=D1=8F=D0=92=D0=B8=D0=BD=D0=BE=D0=BA=D1=83=D1=80=D0=BE=D0=B2=D0=B0 =D0=90=
+=D0=BD=D0=BD=D0=B0=D0=9A=D0=B8=D1=87=D0=B5=D0=B5=D0=B2=D0=B0 =D0=9A=D0=B0=
+=D1=80=D0=B8=D0=BD=D0=B0=D0=9A=D1=80=D1=8B=D0=BB=D0=BE=D0=B2 =D0=90=D0=BB=
+=D0=B5=D0=BA=D1=81=D0=B0=D0=BD=D0=B4=D1=80=D0=9D=D0=B0=D0=B9=D0=B4=D0=B5=D0=
+=BD=D0=BE=D0=B2 =D0=93=D0=B5=D0=BE=D1=80=D0=B3=D0=B8=D0=B9=D0=9E=D1=81=D1=
+=82=D1=80=D0=BE=D1=83=D1=85
+  =D0=95=D0=B2=D0=B3=D0=B5=D0=BD=D0=B8=D0=B9=D0=A7=D0=B5=D1=80=D0=BD=D0=B0=
+=D0=BA=D0=BE=D0=B2 =D0=94=D0=BC=D0=B8=D1=82=D1=80=D0=B8=D0=B9
+  =D0=A0=D1=8B=D0=B1=D0=B0=D0=BA=D0=BE=D0=B2=D0=B0 =D0=90=D0=BD=D0=B0=D1=81=
+=D1=82=D0=B0=D1=81=D0=B8=D1=8F
+  =D0=9F=D0=B8=D1=81=D1=8C=D0=BC=D0=B0 =D0=B8=D0=B7 =D1=80=D0=B0=D1=81=D1=
+=81=D1=8B=D0=BB=D0=BA=D0=B8 =D0=B4=D0=BE =D0=BD=D0=B8=D1=85 =D0=BD=D0=B5 =
+=D0=B4=D0=BE=D1=85=D0=BE=D0=B4=D1=8F=D1=82. =D0=92=D0=BE=D0=B7=D0=B2=D1=80=
+=D0=B0=D1=89=D0=B0=D1=8E=D1=82=D1=81=D1=8F =D1=81 =D0=BE=D1=88=D0=B8=D0=B1=
+=D0=BA=D0=BE=D0=B9 (=D0=BD=D0=B5=D0=BF=D1=80=D0=B0=D0=B2=D0=B8=D0=BB=D1=8C=
+=D0=BD=D1=8B=D0=B9
+  =D0=B8=D0=BB=D0=B8 =D0=BD=D0=B5=D1=81=D1=83=D1=89=D0=B5=D1=81=D1=82=D0=B2=
+=D1=83=D1=8E=D1=89=D0=B8=D0=B9 =D0=B0=D0=B4=D1=80=D0=B5=D1=81)
+
+  --
+
+
+  =D0=A1 =D1=83=D0=B2=D0=B0=D0=B6=D0=B5=D0=BD=D0=B8=D0=B5=D0=BC, =D0=90=D0=
+=BB=D0=B5=D0=BA=D1=81=D0=B0=D0=BD=D0=B4=D1=80 =D0=9C=D0=B0=D1=86=D1=83=D0=
+=B5=D0=B2
+  e-mail: alex.matsuev@gmail.com
+  skype: matsuev_aleksandr
+  =D1=82=D0=B5=D0=BB.: +7 983 154 72 54
+
+--_----------=_14950775721008420
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="utf-8"
+
+=D0=9D=D0=B0=D0=B9=D0=B4=D0=B5=D0=BD=D0=BE=D0=B2=D0=B0 =D0=BC=D0=BE=D0=B6=
+=D0=BD=D0=BE =D0=B2=D1=8B=D1=87=D0=B5=D1=80=D0=BA=D0=BD=D1=83=D1=82=D1=8C<p=
+></p><blockquote style=3D"border-left: 1px solid rgb(73, 78, 89); margin: 1=
+0px; padding: 10px;"><!-- Hostname: benito37.mail.rambler.ru -->
+
+
+    <div class=3D"messageBodyContainer" id=3D"part0">
+=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20
+    <div class=3D"messageBodyContainer isInnerPart" id=3D"part2"><div class=
+=3D"messageBody isFormattedText">
+                <div class=3D"RMCFDCOB"><div dir=3D"ltr">=D0=94=D1=80=D1=83=
+=D0=B7=D1=8C=D1=8F!<div><br></div><div>=D0=9F=D1=80=D0=BE=D1=81=D1=8C=D0=B1=
+=D0=B0 =D1=83=D1=82=D0=BE=D1=87=D0=BD=D0=B8=D1=82=D1=8C =D1=8D=D0=BB=D0=B5=
+=D0=BA=D1=82=D1=80=D0=BE=D0=BD=D0=BD=D1=8B=D0=B5 =D0=B0=D0=B4=D1=80=D0=B5=
+=D1=81=D0=B0 =D1=81=D0=BB=D0=B5=D0=B4=D1=83=D1=8E=D1=89=D0=B8=D1=85 =D1=81=
+=D0=BE=D1=82=D1=80=D1=83=D0=B4=D0=BD=D0=B8=D0=BA=D0=BE=D0=B2 (=D0=B8 =D0=BE=
+=D0=B4=D0=BD=D0=BE=D0=B3=D0=BE =D0=B7=D0=BE=D0=BD=D0=B4=D0=B5=D1=80=D0=B0):=
+</div><div><br></div><div>=D0=91=D1=83=D0=BB=D0=B0=D0=BD=D0=BE=D0=B2=D0=B0 =
+=D0=9D=D0=B0=D1=81=D1=82=D1=8F</div><div>=D0=92=D0=B8=D0=BD=D0=BE=D0=BA=D1=
+=83=D1=80=D0=BE=D0=B2=D0=B0 =D0=90=D0=BD=D0=BD=D0=B0</div><div>=D0=9A=D0=B8=
+=D1=87=D0=B5=D0=B5=D0=B2=D0=B0 =D0=9A=D0=B0=D1=80=D0=B8=D0=BD=D0=B0</div><d=
+iv>=D0=9A=D1=80=D1=8B=D0=BB=D0=BE=D0=B2 =D0=90=D0=BB=D0=B5=D0=BA=D1=81=D0=
+=B0=D0=BD=D0=B4=D1=80</div><div>=D0=9D=D0=B0=D0=B9=D0=B4=D0=B5=D0=BD=D0=BE=
+=D0=B2 =D0=93=D0=B5=D0=BE=D1=80=D0=B3=D0=B8=D0=B9</div><div>=D0=9E=D1=81=D1=
+=82=D1=80=D0=BE=D1=83=D1=85 =D0=95=D0=B2=D0=B3=D0=B5=D0=BD=D0=B8=D0=B9</div=
+><div>=D0=A7=D0=B5=D1=80=D0=BD=D0=B0=D0=BA=D0=BE=D0=B2 =D0=94=D0=BC=D0=B8=
+=D1=82=D1=80=D0=B8=D0=B9</div><div><br></div><div>=D0=A0=D1=8B=D0=B1=D0=B0=
+=D0=BA=D0=BE=D0=B2=D0=B0 =D0=90=D0=BD=D0=B0=D1=81=D1=82=D0=B0=D1=81=D0=B8=
+=D1=8F</div><div><br></div><div>=D0=9F=D0=B8=D1=81=D1=8C=D0=BC=D0=B0 =D0=B8=
+=D0=B7 =D1=80=D0=B0=D1=81=D1=81=D1=8B=D0=BB=D0=BA=D0=B8 =D0=B4=D0=BE =D0=BD=
+=D0=B8=D1=85 =D0=BD=D0=B5 =D0=B4=D0=BE=D1=85=D0=BE=D0=B4=D1=8F=D1=82. =D0=
+=92=D0=BE=D0=B7=D0=B2=D1=80=D0=B0=D1=89=D0=B0=D1=8E=D1=82=D1=81=D1=8F =D1=
+=81 =D0=BE=D1=88=D0=B8=D0=B1=D0=BA=D0=BE=D0=B9 (=D0=BD=D0=B5=D0=BF=D1=80=D0=
+=B0=D0=B2=D0=B8=D0=BB=D1=8C=D0=BD=D1=8B=D0=B9 =D0=B8=D0=BB=D0=B8 =D0=BD=D0=
+=B5=D1=81=D1=83=D1=89=D0=B5=D1=81=D1=82=D0=B2=D1=83=D1=8E=D1=89=D0=B8=D0=B9=
+ =D0=B0=D0=B4=D1=80=D0=B5=D1=81)</div><div><br clear=3D"all"><div><br></div=
+>-- <br><div class=3D"RMCFDCOB gmail_signature" data-smartmail=3D"gmail_sig=
+nature"><br><br>=D0=A1 =D1=83=D0=B2=D0=B0=D0=B6=D0=B5=D0=BD=D0=B8=D0=B5=D0=
+=BC, =D0=90=D0=BB=D0=B5=D0=BA=D1=81=D0=B0=D0=BD=D0=B4=D1=80 =D0=9C=D0=B0=D1=
+=86=D1=83=D0=B5=D0=B2<br>e-mail: <a target=3D"_blank"  href=3D"mailto:alex.=
+matsuev@gmail.com">alex.matsuev@gmail.com</a><br>skype: matsuev_aleksandr<b=
+r>=D1=82=D0=B5=D0=BB.: +7 983 154 72 54</div>=0D
+</div></div>=0D
+</div>
+            </div></div>
+
+
+            </div>
+
+
+
+
+</blockquote>=
+
+--_----------=_14950775721008420--

@@ -2,12 +2,16 @@ package main
 
 import (
 	"bytes"
+	"fmt"
 	"io"
 	"log"
+	"net/mail"
 	"os"
+	"strconv"
 	"strings"
 
 	message "github.com/emersion/go-message"
+	"github.com/jhillyerd/go.enmime"
 )
 
 func main() {
@@ -24,17 +28,76 @@ func main() {
 		log.Fatal(err)
 	}
 
-	// We'll add "This message is powered by Go" at the end of each text entity.
-	poweredByHtml := `<p><b>Сообщение от:</b> Александр Мацуев
-    &lt;<a href="mailto:alex.matsuev@gmail.com">alex.matsuev@gmail.com</a>&gt;<p>`
+	hh := []string{
+		"MIME-Version",
+		"Message-Id",
+		"Content-Type",
+		"Content-Transfer-Encoding",
+		"In-Reply-To",
+		"References",
+		// "Subject",
+	}
 
-	poweredByPlain := "Сообщение от:  Александр Мацуев <alex.matsuev@gmail.com>\n— — — — — —\n\n"
+	var newHeader string
+	// var newHeader message.Header
+	// newHeader = make(message.Header)
 
-	var b bytes.Buffer
-	w, err := message.CreateWriter(&b, m.Header)
+	for _, k := range hh {
+		if h := m.Header.Get(k); h != "" {
+			newHeader += k + ": " + h + "\r\n"
+			// newHeader.Set(k, h)
+		}
+	}
+	newHeader += "\r\n"
+
+	mm, err := message.Read(bytes.NewReader([]byte(newHeader)))
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	from, _ := mail.ParseAddress(enmime.DecodeHeader(m.Header.Get("From")))
+	to, _ := mail.ParseAddress(enmime.DecodeHeader(m.Header.Get("To")))
+	subj := enmime.DecodeHeader(m.Header.Get("Subject"))
+	// subj := mime.BEncoding.Encode("utf-8", enmime.DecodeHeader(m.Header.Get("Subject")))
+
+	var lprefix string = "TEST: Тестовая рассылка"
+	var uid uint64 = 145
+
+	from.Name = fmt.Sprintf("%s", lprefix)
+	from.Address = to.Address
+
+	mm.Header.Add("From", fmt.Sprintf("%s <%s>", from.Name, from.Address))
+	mm.Header.Add("Reply-To", to.Address)
+	mm.Header.Add("Subject", subj)
+	mm.Header.Add("X-KLSH-Sender", strconv.FormatUint(uid, 10))
+
+	// newHeader += fmt.Sprintf("From: %s\r\n", from.String())
+	// newHeader += fmt.Sprintf("Reply-To: <%s>\r\n", to.Address)
+	// newHeader += fmt.Sprintf("Subject: %s\r\n", subj)
+	// newHeader += fmt.Sprintf("X-KLSH-Sender: %v\r\n", uid)
+
+	// newHeader += fmt.Sprintf("From: %s\r\n", from.String())
+	// newHeader += fmt.Sprintf("Reply-To: <%s>\r\n", to.Address)
+	// newHeader += fmt.Sprintf("Subject: %s\r\n", subj)
+	// newHeader += fmt.Sprintf("X-KLSH-Sender: %v\r\n", uid)
+	// newHeader += "\r\n"
+	// // fmt.Printf("Subj: %s\n", subj)
+
+	// fmt.Println(newHeader)
+
+	// We'll add "This message is powered by Go" at the end of each text entity.
+	poweredByHtml := `<p><b>Сообщение от:</b> Александр Мацуев
+	  &lt;<a href="mailto:alex.matsuev@gmail.com">alex.matsuev@gmail.com</a>&gt;<p>`
+
+	poweredByPlain := "Сообщение от:  Александр Мацуев <alex.matsuev@gmail.com>\n— — — — — —\n\n"
+
+	// hdr := make(message.Header)
+	var b bytes.Buffer
+	w, err := message.CreateWriter(&b, mm.Header)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer w.Close()
 
 	// Define a function that transforms message.
 	var transform func(w *message.Writer, e *message.Entity) error
@@ -78,7 +141,6 @@ func main() {
 	if err := transform(w, m); err != nil {
 		log.Fatal(err)
 	}
-	w.Close()
 
-	log.Println(b.String())
+	fmt.Println(b.String())
 }
