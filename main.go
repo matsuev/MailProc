@@ -11,6 +11,7 @@ import (
 	"net/smtp"
 	"os"
 	"strconv"
+	"strings"
 
 	message "github.com/matsuev/go-message"
 	charset "github.com/matsuev/go-message/charset"
@@ -209,14 +210,14 @@ func transform(w *message.Writer, e *message.Entity, sender *mail.Address) error
 		return nil
 	} else {
 		body := e.Body
-		// var newLine string
-		// if strings.HasPrefix(e.Header.Get("Content-Type"), "text/plain") {
-		// 	newLine = fmt.Sprintf(senderPlain, sender.Name, sender.Address)
-		// }
-		// if strings.HasPrefix(e.Header.Get("Content-Type"), "text/html") {
-		// 	newLine = fmt.Sprintf(senderHtml, sender.Name, sender.Address, sender.Address)
-		// }
-		// body = io.MultiReader(strings.NewReader(newLine), body)
+		var newLine string
+		if strings.HasPrefix(e.Header.Get("Content-Type"), "text/plain") {
+			newLine = fmt.Sprintf(senderPlain, sender.Name, sender.Address)
+		}
+		if strings.HasPrefix(e.Header.Get("Content-Type"), "text/html") {
+			newLine = fmt.Sprintf(senderHtml, sender.Name, sender.Address, sender.Address)
+		}
+		body = io.MultiReader(strings.NewReader(newLine), body)
 
 		// rb := make([]byte, 0)
 		// io.ReadFull(body, rb)
