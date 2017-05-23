@@ -3,7 +3,6 @@ package main
 import (
 	"bytes"
 	"database/sql"
-	"encoding/base64"
 	"fmt"
 	"io"
 	"log"
@@ -219,12 +218,12 @@ func transform(w *message.Writer, e *message.Entity, sender *mail.Address) error
 		// }
 		// body = io.MultiReader(strings.NewReader(newLine), body)
 
-		rb := make([]byte, 0)
-		io.ReadFull(body, rb)
-
-		encoder := base64.NewEncoder(base64.StdEncoding, w)
-		_, err := encoder.Write(rb)
-		// _, err := io.Copy(w, body)
+		// rb := make([]byte, 0)
+		// io.ReadFull(body, rb)
+		//
+		// encoder := base64.NewEncoder(base64.StdEncoding, w)
+		// _, err := encoder.Write(rb)
+		_, err := io.Copy(w, body)
 		return err
 	}
 }
