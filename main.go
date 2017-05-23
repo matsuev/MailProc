@@ -8,6 +8,7 @@ import (
 	"log"
 	"net/mail"
 	"os"
+	"strconv"
 	"strings"
 
 	message "github.com/emersion/go-message"
@@ -86,10 +87,8 @@ func main() {
 
 	// Запрос на проверку прав пользователя на отправку сообщений в список
 	var uid uint64
-	var lname string
-	var fshort string
 	err = db.QueryRow(`
-		SELECT user.id, user.fshort, user.lname
+		SELECT user.id
 		FROM user
 		INNER JOIN user_list
 		ON (user_list.lid=?
@@ -98,7 +97,7 @@ func main() {
 		)
 		WHERE LCASE(user.email)=TRIM(LCASE(?))
 		AND user.active
-		`, lid, from.Address).Scan(&uid, &fshort, &lname)
+		`, lid, from.Address).Scan(&uid)
 	if err != nil {
 		log.Println("User", from.Address, "can't send messages to", to.Address)
 		os.Exit(0)
@@ -119,11 +118,11 @@ func main() {
 	sender.Name = from.Name
 	sender.Address = from.Address
 
-	from.Name = fmt.Sprintf("%", "TEST: Тестовая рассылка")
+	from.Name = fmt.Sprintf("%", lprefix)
 	from.Address = to.Address
 	newHeader.Set("From", from.String())
 	newHeader.Set("Reply-To", to.Address)
-	newHeader.Set("X-KLSH-Sender", "")
+	newHeader.Set("X-KLSH-Sender", strconv.Itoa(uid))
 
 	var b bytes.Buffer
 	w, err := message.CreateWriter(&b, newHeader)
