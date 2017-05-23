@@ -40,15 +40,15 @@ func main() {
 		// "Subject",
 	}
 
-	r, err := os.Open("./testmessage.eml")
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer r.Close()
+	// r, err := os.Open("./testmessage.eml")
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+	// defer r.Close()
 
 	// Читаем сообщение из стандартного ввода
-	// msg, err := message.Read(os.Stdin)
-	msg, err := message.Read(r)
+	msg, err := message.Read(os.Stdin)
+	// msg, err := message.Read(r)
 	logFatal(err)
 	log.Println("New message accepted...")
 
@@ -150,22 +150,22 @@ func main() {
 	}
 	defer c.Close()
 
-	// // Заголовки для отправки
-	// c.Mail(to.Address)
-	// c.Rcpt(fmt.Sprintf("%v@klshmail", lid))
-	//
-	// wc, err := c.Data()
-	// logFatal(err)
-	// defer wc.Close()
-	//
-	// // Отправка сообщения
-	// br := bytes.NewReader(b.Bytes())
-	// if _, err = io.Copy(wc, br); err != nil {
-	// 	log.Println("SMTP send body error")
-	// 	log.Fatalln(err)
-	// }
+	// Заголовки для отправки
+	c.Mail(to.Address)
+	c.Rcpt(fmt.Sprintf("%v@klshmail", lid))
 
-	fmt.Println(b.String())
+	wc, err := c.Data()
+	logFatal(err)
+	defer wc.Close()
+
+	// Отправка сообщения
+	br := bytes.NewReader(b.Bytes())
+	if _, err = io.Copy(wc, br); err != nil {
+		log.Println("SMTP send body error")
+		log.Fatalln(err)
+	}
+
+	// fmt.Println(b.String())
 
 	// Завершение работы
 	log.Println("Message processing done.")
