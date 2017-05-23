@@ -118,7 +118,7 @@ func main() {
 	sender.Name = from.Name
 	sender.Address = from.Address
 
-	from.Name = fmt.Sprintf("%", lprefix)
+	from.Name = fmt.Sprintf("%s", lprefix)
 	from.Address = to.Address
 	newHeader.Set("From", from.String())
 	newHeader.Set("Reply-To", to.Address)
