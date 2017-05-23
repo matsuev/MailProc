@@ -195,6 +195,7 @@ func transform(w *message.Writer, e *message.Entity, sender *mail.Address) error
 
 			fmt.Println(p.Header)
 
+			p.Header.Add("Content-Transfer-Encoding", "base64")
 			pw, err := w.CreatePart(p.Header)
 			if err != nil {
 				return err
@@ -208,7 +209,6 @@ func transform(w *message.Writer, e *message.Entity, sender *mail.Address) error
 		}
 		return nil
 	} else {
-		e.Header.Add("Content-Transfer-Encoding", "base64")
 		body := e.Body
 		// var newLine string
 		// if strings.HasPrefix(e.Header.Get("Content-Type"), "text/plain") {
