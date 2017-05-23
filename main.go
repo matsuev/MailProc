@@ -192,6 +192,8 @@ func transform(w *message.Writer, e *message.Entity, sender *mail.Address) error
 				return err
 			}
 
+			fmt.Println(p.Header)
+
 			pw, err := w.CreatePart(p.Header)
 			if err != nil {
 				return err
