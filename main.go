@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io"
 	"log"
+	"mime"
 	"net/mail"
 	"net/smtp"
 	"os"
@@ -37,7 +38,7 @@ func main() {
 		"Content-Transfer-Encoding",
 		"In-Reply-To",
 		"References",
-		"Subject",
+		// "Subject",
 	}
 
 	// Читаем сообщение из стандартного ввода
@@ -53,6 +54,11 @@ func main() {
 	from, err := getMailHeader("From", msg.Header)
 	logFatal(err)
 	log.Printf("From: %s <%s>\n", from.Name, from.Address)
+
+	hSubject, err := charset.DecodeHeader(msg.Header.Get("Subject"))
+	logFatal(err)
+
+	subj := mime.BEncoding.Encode("utf-8", hSubject)
 
 	if to.Address == "" || from.Address == "" {
 		log.Fatalln("Empty address. Reject message.")
@@ -116,6 +122,7 @@ func main() {
 
 	newHeader.Set("From", from.String())
 	newHeader.Set("Reply-To", to.Address)
+	newHeader.Set("Subject", subj)
 	newHeader.Set("X-KLSH-Sender", strconv.FormatUint(uid, 10))
 
 	var b bytes.Buffer
