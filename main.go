@@ -113,7 +113,7 @@ func main() {
 	}
 
 	var newHeader message.Header
-	// newHeader = make(message.Header)
+	newHeader = make(message.Header)
 	//
 	// dec := new(mime.WordDecoder)
 	//
