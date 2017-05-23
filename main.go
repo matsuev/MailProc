@@ -122,7 +122,7 @@ func main() {
 	from.Address = to.Address
 	newHeader.Set("From", from.String())
 	newHeader.Set("Reply-To", to.Address)
-	newHeader.Set("X-KLSH-Sender", strconv.Itoa(uid))
+	newHeader.Set("X-KLSH-Sender", strconv.FormatUint(uid, 10))
 
 	var b bytes.Buffer
 	w, err := message.CreateWriter(&b, newHeader)
