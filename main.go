@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"database/sql"
+	"encoding/base64"
 	"fmt"
 	"io"
 	"log"
@@ -207,6 +208,7 @@ func transform(w *message.Writer, e *message.Entity, sender *mail.Address) error
 		}
 		return nil
 	} else {
+		// e.Header.Add(key, value)
 		body := e.Body
 		// var newLine string
 		// if strings.HasPrefix(e.Header.Get("Content-Type"), "text/plain") {
@@ -216,7 +218,13 @@ func transform(w *message.Writer, e *message.Entity, sender *mail.Address) error
 		// 	newLine = fmt.Sprintf(senderHtml, sender.Name, sender.Address, sender.Address)
 		// }
 		// body = io.MultiReader(strings.NewReader(newLine), body)
-		_, err := io.Copy(w, body)
+
+		rb := make([]byte, 0)
+		body.Read(rb)
+
+		encoder := base64.NewEncoder(base64.StdEncoding, w)
+		_, err := encoder.Write(rb)
+		// _, err := io.Copy(w, body)
 		return err
 	}
 }
