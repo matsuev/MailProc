@@ -6,11 +6,9 @@ import (
 	"fmt"
 	"io"
 	"log"
-	"mime"
 	"net/mail"
 	"net/smtp"
 	"os"
-	"strconv"
 	"strings"
 
 	message "github.com/emersion/go-message"
@@ -106,19 +104,26 @@ func main() {
 	}
 
 	// Формирование заголовков нового сообщения
-	// var newmessage string
-	var newHeader message.Header
-	newHeader = make(message.Header)
-
-	dec := new(mime.WordDecoder)
+	var newmessage string
 
 	for _, k := range hh {
 		if h := m.Header.Get(k); h != "" {
-			// newHeader[k] := h
-			dh, _ := dec.Decode(h)
-			newHeader.Set(k, dh)
+			newmessage += k + ": " + h + "\r\n"
 		}
 	}
+
+	var newHeader message.Header
+	// newHeader = make(message.Header)
+	//
+	// dec := new(mime.WordDecoder)
+	//
+	// for _, k := range hh {
+	// 	if h := m.Header.Get(k); h != "" {
+	// 		// newHeader[k] := h
+	// 		dh, _ := dec.Decode(h)
+	// 		newHeader.Set(k, dh)
+	// 	}
+	// }
 
 	sender := new(mail.Address)
 	sender.Name = from.Name
@@ -126,18 +131,23 @@ func main() {
 
 	from.Name = fmt.Sprintf("%s", lprefix)
 	from.Address = to.Address
-	newHeader.Set("From", from.String())
-	newHeader.Set("Reply-To", to.Address)
-	newHeader.Set("X-KLSH-Sender", strconv.FormatUint(uid, 10))
-	// newHeader["From"] := from.String()
-	// newHeader["Reply-To"] := to.Address
-	// newHeader["X-KLSH-Sender"] := strconv.FormatUint(uid, 10)
+	// newHeader.Set("From", from.String())
+	// newHeader.Set("Reply-To", to.Address)
+	// newHeader.Set("X-KLSH-Sender", strconv.FormatUint(uid, 10))
+
+	newmessage += fmt.Sprintf("From: %s\r\n", from.String())
+	newmessage += fmt.Sprintf("Reply-To: <%s>\r\n", to.Address)
+	newmessage += fmt.Sprintf("X-KLSH-Sender: %v\r\n", uid)
+	newmessage += "\r\n"
 
 	var b bytes.Buffer
+	// w := new(message.Writer)
 	w, err := message.CreateWriter(&b, newHeader)
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	io.Copy(w, strings.NewReader(newmessage))
 
 	if err := transform(w, m, sender); err != nil {
 		log.Fatal(err)
