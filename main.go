@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io"
 	"log"
+	"mime"
 	"net/mail"
 	"net/smtp"
 	"os"
@@ -109,9 +110,13 @@ func main() {
 	var newHeader message.Header
 	newHeader = make(message.Header)
 
+	dec := new(mime.WordDecoder)
+
 	for _, k := range hh {
 		if h := m.Header.Get(k); h != "" {
-			newHeader.Set(k, h)
+			// newHeader[k] := h
+			dh, _ := dec.Decode(h)
+			newHeader.Set(k, dh)
 		}
 	}
 
@@ -124,6 +129,9 @@ func main() {
 	newHeader.Set("From", from.String())
 	newHeader.Set("Reply-To", to.Address)
 	newHeader.Set("X-KLSH-Sender", strconv.FormatUint(uid, 10))
+	// newHeader["From"] := from.String()
+	// newHeader["Reply-To"] := to.Address
+	// newHeader["X-KLSH-Sender"] := strconv.FormatUint(uid, 10)
 
 	var b bytes.Buffer
 	w, err := message.CreateWriter(&b, newHeader)
@@ -179,7 +187,7 @@ func logFatal(e error) {
 }
 
 const senderHtml string = `<p><b>Сообщение от:</b> %s &lt;<a href="mailto:%s">%s</a>&gt;<p>`
-const senderPlain string = "Сообщение от:  %s <%s>\n— — — — — —\n\n"
+const senderPlain string = "| Сообщение от:  %s <%s>\n——\n\n"
 
 func transform(w *message.Writer, e *message.Entity, sender *mail.Address) error {
 	if mr := e.MultipartReader(); mr != nil {
