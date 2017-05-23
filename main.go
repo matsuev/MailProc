@@ -78,9 +78,9 @@ func main() {
 	// Запрос на проверку прав пользователя на отправку сообщений в список
 	var uid uint64
 	var lname string
-	var lshort string
+	var fshort string
 	err = db.QueryRow(`
-		SELECT user.id, user.lshort, user.lname
+		SELECT user.id, user.fshort, user.lname
 		FROM user
 		INNER JOIN user_list
 		ON (user_list.lid=?
@@ -89,7 +89,7 @@ func main() {
 		)
 		WHERE LCASE(user.email)=TRIM(LCASE(?))
 		AND user.active
-		`, lid, from.Address).Scan(&uid, &lshort, &lname)
+		`, lid, from.Address).Scan(&uid, &fshort, &lname)
 	if err != nil {
 		log.Println("User", from.Address, "can't send messages to", to.Address)
 		os.Exit(0)
@@ -105,7 +105,7 @@ func main() {
 	}
 
 	
-	from.Name = fmt.Sprintf("%s %s.%s (%s)", lprefix, lshort, lname, from.Address)
+	from.Name = fmt.Sprintf("%s %s.%s (%s)", lprefix, fshort, lname, from.Address)
 	from.Address = to.Address
 	newmessage += fmt.Sprintf("From: %s\r\n", from.String())
 	newmessage += fmt.Sprintf("Reply-To: <%s>\r\n", from.Address)
