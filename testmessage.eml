@@ -1,0 +1,124 @@
+Received: from smtp2o.mail.yandex.net ([37.140.190.27])
+	by mxback1h.mail.yandex.net with LMTP id icqkBN8s
+	for <test@klsh.ru>; Tue, 23 May 2017 18:47:21 +0300
+Received: from smtp2o.mail.yandex.net (localhost.localdomain [127.0.0.1])
+	by smtp2o.mail.yandex.net (Yandex) with ESMTP id 344D95080C11
+	for <test@klsh.ru>; Tue, 23 May 2017 18:47:21 +0300 (MSK)
+Received: by smtp2o.mail.yandex.net (nwsmtp/Yandex) with ESMTPSA id zJX1ODrTf1-lKfWoKKp;
+	Tue, 23 May 2017 18:47:20 +0300
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(Client certificate not present)
+X-Yandex-Front: smtp2o.mail.yandex.net
+X-Yandex-TimeMark: 1495554440
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=klsh.ru; s=mail; t=1495554440;
+	bh=6d61wSFo9xf6UVKvHdNSP7hhTfLjkqLS/HqWEXcJK6c=;
+	h=From:Subject:Date:References:To:In-Reply-To:Message-Id;
+	b=Xuyp2LYGwtTDbf6Pj5uUvtns2ygzt9pNjr/MZcBs1uROJ5U5i0i9QgcNRg9v59Fb5
+	 AZSy3ZtGThwKXcOiijRHubJsoix/AjI3yaYrBSkAfglhWd4ql6qt16Rc5E/1rZBu/4
+	 YQ8TcRGZ8wjynmEEUBN3T5YuW6IS7nfDLWXHoF6o=
+Authentication-Results: smtp2o.mail.yandex.net; dkim=pass header.i=@klsh.ru
+X-Yandex-Spam: 1
+From: =?utf-8?B?0JDQu9C10LrRgdCw0L3QtNGAINCc0LDRhtGD0LXQsg==?= <a.matsuev@klsh.ru>
+Content-Type: multipart/alternative;
+ boundary="Apple-Mail=_0AC8222B-9F9E-4517-BD0C-115361E0E0C7"
+Mime-Version: 1.0 (Mac OS X Mail 10.3 \(3273\))
+Subject: =?utf-8?B?UmU6INCf0Y/RgtC+0LUg0YLQtdGB0YLQvtCy0L7QtSDRgdC+0L4=?=
+ =?utf-8?B?0LHRidC10L3QuNC1?=
+Date: Tue, 23 May 2017 22:47:19 +0700
+References: <CAHyCNfD=EX0YVTqy5_RVxKzJC8QaoLxiqMyi9Ap_S=xghHB-Hg@mail.gmail.com>
+To: =?utf-8?B?ItCQLiDQnNCw0YbRg9C10LIgVGVzdDoi?= <test@klsh.ru>
+In-Reply-To: <CAHyCNfD=EX0YVTqy5_RVxKzJC8QaoLxiqMyi9Ap_S=xghHB-Hg@mail.gmail.com>
+Message-Id: <908C2AA3-5851-4BCC-8356-ABBA373E3119@klsh.ru>
+X-Mailer: Apple Mail (2.3273)
+Return-Path: a.matsuev@klsh.ru
+X-Yandex-Forward: 74a21b7715d6fb45a705172fc18f18d0
+
+
+--Apple-Mail=_0AC8222B-9F9E-4517-BD0C-115361E0E0C7
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain;
+	charset=utf-8
+
+Ghajsdgf gads gas dog asdgf gasdhfjkagsdhf
+Asdfhjagsdfkhjgas dog asdgfasgdf gasd fgashdfjkaghsdf
+Asdgfhjkasdfjhaksgdf gas fg asdgf asgd fgasdhfjkasdhfgkajsdf
+
+> 23 =D0=BC=D0=B0=D1=8F 2017 =D0=B3., =D0=B2 22:46, TEST: =
+=D0=A2=D0=B5=D1=81=D1=82=D0=BE=D0=B2=D0=B0=D1=8F =D1=80=D0=B0=D1=81=D1=81=D1=
+=8B=D0=BB=D0=BA=D0=B0 <test@klsh.ru> =D0=BD=D0=B0=D0=BF=D0=B8=D1=81=D0=B0=D0=
+=BB(=D0=B0):
+>=20
+> =D0=A1=D0=BE=D0=BE=D0=B1=D1=89=D0=B5=D0=BD=D0=B8=D0=B5 =D0=BE=D1=82: =
+=D0=90=D0=BB=D0=B5=D0=BA=D1=81=D0=B0=D0=BD=D0=B4=D1=80 =D0=9C=D0=B0=D1=86=D1=
+=83=D0=B5=D0=B2 <alex.matsuev@gmail.com <mailto:alex.matsuev@gmail.com>>
+>=20
+>=20
+> =D0=BF=D1=84=D1=80=D1=8B=D0=B2=D0=BE=D0=B0=D0=BF =D1=84=D0=BF=D0=B2=D1=8B=
+ =D0=B0=D0=BF=D1=84=D1=8B=D0=B2 =D0=B0=D0=BF =D1=84=D0=B2=D1=8B=D0=BF =
+=D1=84=D1=8B=D0=BF=D0=B2 =D0=B0=D0=BF=D1=80=D1=84=D1=8B=D0=BE=D0=B2=D0=BB=D0=
+=B0=D0=BF=D0=BB
+> =D1=84=D0=B2=D1=8B=D0=B0=D0=BF=D1=80=D0=BE=D1=84=D1=8B=D0=BF=D0=B2=D0=B0=
+ =D0=BF=D1=84=D1=8B=D0=B2 =D0=B0=D0=BF =D1=84=D1=8B=D0=B2=D0=BF=D0=B0 =
+=D1=84=D0=BF=D1=8B=D0=B2=D0=B0=D1=80=D0=BE=D0=BB=D1=84=D0=BF=D1=8B=D0=B2=D0=
+=B0=D0=BE=D0=BB=D1=80=D1=84
+> =D1=84=D1=8B=D0=B2=D0=BF=D0=B0=D1=80=D0=BE=D0=BB=D0=BF=D1=84=D1=8B=D0=B2=
+ =D0=B0=D0=BF=D1=84=D1=8B=D1=80=D0=B2=D0=BE=D0=B0=D0=BF=D0=BB
+>=20
+> --=20
+>=20
+>=20
+> =D0=A1 =D1=83=D0=B2=D0=B0=D0=B6=D0=B5=D0=BD=D0=B8=D0=B5=D0=BC, =
+=D0=90=D0=BB=D0=B5=D0=BA=D1=81=D0=B0=D0=BD=D0=B4=D1=80 =D0=9C=D0=B0=D1=86=D1=
+=83=D0=B5=D0=B2
+> e-mail: alex.matsuev@gmail.com <mailto:alex.matsuev@gmail.com>
+> skype: matsuev_aleksandr
+> =D1=82=D0=B5=D0=BB.: +7 983 154 72 54
+
+
+--Apple-Mail=_0AC8222B-9F9E-4517-BD0C-115361E0E0C7
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html;
+	charset=utf-8
+
+<html><head><meta http-equiv=3D"Content-Type" content=3D"text/html =
+charset=3Dutf-8"></head><body style=3D"word-wrap: break-word; =
+-webkit-nbsp-mode: space; -webkit-line-break: after-white-space;" =
+class=3D""><div class=3D"">Ghajsdgf gads gas dog asdgf =
+gasdhfjkagsdhf</div><div class=3D"">Asdfhjagsdfkhjgas dog asdgfasgdf =
+gasd fgashdfjkaghsdf</div><div class=3D"">Asdgfhjkasdfjhaksgdf gas fg =
+asdgf asgd fgasdhfjkasdhfgkajsdf</div><br class=3D""><div><blockquote =
+type=3D"cite" class=3D""><div class=3D"">23 =D0=BC=D0=B0=D1=8F 2017 =D0=B3=
+., =D0=B2 22:46, TEST: =D0=A2=D0=B5=D1=81=D1=82=D0=BE=D0=B2=D0=B0=D1=8F =
+=D1=80=D0=B0=D1=81=D1=81=D1=8B=D0=BB=D0=BA=D0=B0 &lt;<a =
+href=3D"mailto:test@klsh.ru" class=3D"">test@klsh.ru</a>&gt; =
+=D0=BD=D0=B0=D0=BF=D0=B8=D1=81=D0=B0=D0=BB(=D0=B0):</div><br =
+class=3D"Apple-interchange-newline"><div class=3D""><p class=3D""><b =
+class=3D"">=D0=A1=D0=BE=D0=BE=D0=B1=D1=89=D0=B5=D0=BD=D0=B8=D0=B5 =
+=D0=BE=D1=82:</b> =D0=90=D0=BB=D0=B5=D0=BA=D1=81=D0=B0=D0=BD=D0=B4=D1=80 =
+=D0=9C=D0=B0=D1=86=D1=83=D0=B5=D0=B2 &lt;<a =
+href=3D"mailto:alex.matsuev@gmail.com" =
+class=3D"">alex.matsuev@gmail.com</a>&gt;</p><div class=3D""><br =
+class=3D"webkit-block-placeholder"></div><div dir=3D"ltr" =
+class=3D"">=D0=BF=D1=84=D1=80=D1=8B=D0=B2=D0=BE=D0=B0=D0=BF =D1=84=D0=BF=D0=
+=B2=D1=8B =D0=B0=D0=BF=D1=84=D1=8B=D0=B2 =D0=B0=D0=BF =D1=84=D0=B2=D1=8B=D0=
+=BF =D1=84=D1=8B=D0=BF=D0=B2 =D0=B0=D0=BF=D1=80=D1=84=D1=8B=D0=BE=D0=B2=D0=
+=BB=D0=B0=D0=BF=D0=BB<div class=3D"">=D1=84=D0=B2=D1=8B=D0=B0=D0=BF=D1=80=D0=
+=BE=D1=84=D1=8B=D0=BF=D0=B2=D0=B0 =D0=BF=D1=84=D1=8B=D0=B2 =D0=B0=D0=BF =
+=D1=84=D1=8B=D0=B2=D0=BF=D0=B0 =
+=D1=84=D0=BF=D1=8B=D0=B2=D0=B0=D1=80=D0=BE=D0=BB=D1=84=D0=BF=D1=8B=D0=B2=D0=
+=B0=D0=BE=D0=BB=D1=80=D1=84</div><div class=3D"">=D1=84=D1=8B=D0=B2=D0=BF=D0=
+=B0=D1=80=D0=BE=D0=BB=D0=BF=D1=84=D1=8B=D0=B2 =D0=B0=D0=BF=D1=84=D1=8B=D1=80=
+=D0=B2=D0=BE=D0=B0=D0=BF=D0=BB<br clear=3D"all" class=3D""><div =
+class=3D""><br class=3D""></div>-- <br class=3D""><div =
+class=3D"gmail_signature" data-smartmail=3D"gmail_signature"><br =
+class=3D""><br class=3D"">=D0=A1 =D1=83=D0=B2=D0=B0=D0=B6=D0=B5=D0=BD=D0=B8=
+=D0=B5=D0=BC, =D0=90=D0=BB=D0=B5=D0=BA=D1=81=D0=B0=D0=BD=D0=B4=D1=80 =
+=D0=9C=D0=B0=D1=86=D1=83=D0=B5=D0=B2<br class=3D"">e-mail: <a =
+href=3D"mailto:alex.matsuev@gmail.com" target=3D"_blank" =
+class=3D"">alex.matsuev@gmail.com</a><br class=3D"">skype: =
+matsuev_aleksandr<br class=3D"">=D1=82=D0=B5=D0=BB.: +7 983 154 72 =
+54</div>
+</div></div>
+</div></blockquote></div><br class=3D""></body></html>=
+
+--Apple-Mail=_0AC8222B-9F9E-4517-BD0C-115361E0E0C7--
