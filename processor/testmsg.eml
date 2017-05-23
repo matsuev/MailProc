@@ -1,0 +1,87 @@
+Received: from mxfront9m.mail.yandex.net ([127.0.0.1])
+	by mxfront9m.mail.yandex.net with LMTP id 0sb0s8p4
+	for <a.matsuev@klsh.ru>; Tue, 23 May 2017 08:49:03 +0300
+Received: from mail-qk0-x232.google.com (mail-qk0-x232.google.com [2607:f8b0:400d:c09::232])
+	by mxfront9m.mail.yandex.net (nwsmtp/Yandex) with ESMTPS id 72Pf20NegK-n31u0Ocd;
+	Tue, 23 May 2017 08:49:03 +0300
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(Client certificate not present)
+X-Yandex-Front: mxfront9m.mail.yandex.net
+X-Yandex-TimeMark: 1495518543
+Authentication-Results: mxfront9m.mail.yandex.net; spf=pass (mxfront9m.mail.yandex.net: domain of gmail.com designates 2607:f8b0:400d:c09::232 as permitted sender, rule=[ip6:2607:f8b0:4000::/36]) smtp.mail=alex.matsuev@gmail.com; dkim=pass header.i=@gmail.com
+X-Yandex-Spam: 1
+Received: by mail-qk0-x232.google.com with SMTP id k74so123211199qke.1
+        for <a.matsuev@klsh.ru>; Mon, 22 May 2017 22:49:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to;
+        bh=VMfncnxJ3iT72+2nrcpwm2clycmtDj9f1n58YCZNMJI=;
+        b=UixQl31mNMr00JCKSsr6JzY7inr6TbqcVrIvIa9Hf39BnVDhRXqz+3F5Md4HP6c+23
+         EcbKZfiTS1M/4+aYXesN219BNFKny/J8Wtoo9Qidqmjs1Tf2c1z2aOyUyuMF4By1YLF4
+         DN0ADgGuE6YebwmesXg+3KvMkfneV7q7zutyQFGNLyuxiJ4H1mOgFlhOKKP6Pk8BoblQ
+         cxJo2KmlNITRQRpt12gAXxDB9VdMXc2Ky6oXpwrYPnXtyLKRBI/3Mj5FnUaFQBgx9Uxx
+         aaXqPPiK3u3yR4meyTuzEqbXLwXGYdZU/kPoHn0QxCja1DynB7QigRbEudsfLC9tqeJF
+         6D7w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to;
+        bh=VMfncnxJ3iT72+2nrcpwm2clycmtDj9f1n58YCZNMJI=;
+        b=O9bRTc1Pf5/udvdlphhvBZfL5KXvQJ/bNAQbHcyx3p5lLBlFCcf8LDSilUOzgQ0ZKj
+         rmUoXqtj4xLwOkUmQ48Pgp4HhYR+aQLfmyMkPeBopAacIp5SrmHGY6eUlxX5TGCH9ARv
+         fwwCR5XynuysB0rHGKsCKftaV2OtNS12xlI1KurQpQmKpeimQuVTRuHqJJjw34IzYImM
+         w+DCA1K5Ww/97ZkJTAFQuSIbDHyb7eLNHS98OPQs7Tq2szM+/vbrHruuCf1+78rzz8EQ
+         C+zan7dL6CC8/CDXAkf4uSrJ5TB+Bii28E0O0w/bXmAkDvaEU4+sOHZCcS3NdF2N0uNV
+         /lVQ==
+X-Gm-Message-State: AODbwcBtbK8JQPqQBQjpNctkALPfmCg+r3s99dZOc3OoztfSuMbUe3DE
+	AvPt+4k0wacU3YL5EGQ8KSS4id4TDw==
+X-Received: by 10.55.97.202 with SMTP id v193mr22316621qkb.186.1495518541806;
+ Mon, 22 May 2017 22:49:01 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.237.34.120 with HTTP; Mon, 22 May 2017 22:49:01 -0700 (PDT)
+In-Reply-To: <96A91F15-FD93-4282-8349-CF995CDE43D0@klsh.ru>
+References: <96A91F15-FD93-4282-8349-CF995CDE43D0@klsh.ru>
+From: =?UTF-8?B?0JDQu9C10LrRgdCw0L3QtNGAINCc0LDRhtGD0LXQsg==?= <alex.matsuev@gmail.com>
+Date: Tue, 23 May 2017 12:49:01 +0700
+Message-ID: <CAHyCNfAOoqtfPPrai0M=Lo5jVqV5byk61RkeM9TUMVxwrWN-4g@mail.gmail.com>
+Subject: =?UTF-8?B?UmU6INCf0YDQvtCy0LXRgNC60LAgMg==?=
+To: =?UTF-8?B?0JDQu9C10LrRgdCw0L3QtNGAINCc0LDRhtGD0LXQsg==?= <a.matsuev@klsh.ru>
+Content-Type: multipart/alternative; boundary="94eb2c05b7d87086d505502a8bf8"
+Return-Path: alex.matsuev@gmail.com
+X-Yandex-Forward: 079d9221dd6a34dddd439f5a29439841
+
+
+--94eb2c05b7d87086d505502a8bf8
+Content-Transfer-Encoding: base64
+Content-Type: text/plain;
+	charset=UTF-8
+
+0K3RgtC+INC+0YLQstC10YIg0L3QsCDRgdC+0L7QsdGJ0LXQvdC40LUNCg0KMjAxNy0wNS0yMyAx
+Mjo0NyBHTVQrMDc6MDAg0JDQu9C10LrRgdCw0L3QtNGAINCc0LDRhtGD0LXQsiA8YS5tYXRzdWV2
+QGtsc2gucnU+Og0KDQo+INCf0YDQstC+0YvQsNC/INGE0LDQuSDRhNCy0L/QsCDQsNCy0LAg0L/R
+hCDRi9Cy0LDQv9GA0YTQvtC70LLRi9Cw0L/RhNC+0LvQstGL0LDQvw0KPiBlbWFpbA0KPg0KDQoN
+Cg0KLS0gDQoNCg0K0KEg0YPQstCw0LbQtdC90LjQtdC8LCDQkNC70LXQutGB0LDQvdC00YAg0JzQ
+sNGG0YPQtdCyDQplLW1haWw6IGFsZXgubWF0c3VldkBnbWFpbC5jb20NCnNreXBlOiBtYXRzdWV2
+X2FsZWtzYW5kcg0K0YLQtdC7LjogKzcgOTgzIDE1NCA3MiA1NA0K
+--94eb2c05b7d87086d505502a8bf8
+Content-Transfer-Encoding: base64
+Content-Type: text/html;
+	charset=UTF-8
+
+PGRpdiBkaXI9Imx0ciI+0K3RgtC+INC+0YLQstC10YIg0L3QsCDRgdC+0L7QsdGJ0LXQvdC40LXC
+oDwvZGl2PjxkaXYgY2xhc3M9ImdtYWlsX2V4dHJhIj48YnI+PGRpdiBjbGFzcz0iZ21haWxfcXVv
+dGUiPjIwMTctMDUtMjMgMTI6NDcgR01UKzA3OjAwINCQ0LvQtdC60YHQsNC90LTRgCDQnNCw0YbR
+g9C10LIgPHNwYW4gZGlyPSJsdHIiPiZsdDs8YSBocmVmPSJtYWlsdG86YS5tYXRzdWV2QGtsc2gu
+cnUiIHRhcmdldD0iX2JsYW5rIj5hLm1hdHN1ZXZAa2xzaC5ydTwvYT4mZ3Q7PC9zcGFuPjo8YnI+
+PGJsb2NrcXVvdGUgY2xhc3M9ImdtYWlsX3F1b3RlIiBzdHlsZT0ibWFyZ2luOjAgMCAwIC44ZXg7
+Ym9yZGVyLWxlZnQ6MXB4ICNjY2Mgc29saWQ7cGFkZGluZy1sZWZ0OjFleCI+PGRpdiBzdHlsZT0i
+d29yZC13cmFwOmJyZWFrLXdvcmQiPjxzcGFuIHN0eWxlPSJmb250LXNpemU6MTRweCI+0J/RgNCy
+0L7Ri9Cw0L8g0YTQsNC5INGE0LLQv9CwINCw0LLQsCDQv9GEINGL0LLQsNC/0YDRhNC+0LvQstGL
+0LDQv9GE0L7Qu9Cy0YvQsNC/PC9zcGFuPjxkaXY+ZW1haWw8L2Rpdj48L2Rpdj48L2Jsb2NrcXVv
+dGU+PC9kaXY+PGJyPjxiciBjbGVhcj0iYWxsIj48ZGl2Pjxicj48L2Rpdj4tLSA8YnI+PGRpdiBj
+bGFzcz0iZ21haWxfc2lnbmF0dXJlIiBkYXRhLXNtYXJ0bWFpbD0iZ21haWxfc2lnbmF0dXJlIj48
+YnI+PGJyPtChINGD0LLQsNC20LXQvdC40LXQvCwg0JDQu9C10LrRgdCw0L3QtNGAINCc0LDRhtGD
+0LXQsjxicj5lLW1haWw6IDxhIGhyZWY9Im1haWx0bzphbGV4Lm1hdHN1ZXZAZ21haWwuY29tIiB0
+YXJnZXQ9Il9ibGFuayI+YWxleC5tYXRzdWV2QGdtYWlsLmNvbTwvYT48YnI+c2t5cGU6IG1hdHN1
+ZXZfYWxla3NhbmRyPGJyPtGC0LXQuy46ICs3IDk4MyAxNTQgNzIgNTQ8L2Rpdj4NCjwvZGl2Pg0K
+--94eb2c05b7d87086d505502a8bf8--

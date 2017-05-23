@@ -1,21 +1,24 @@
 package main
 
 import (
+	"bytes"
 	"database/sql"
 	"fmt"
 	"io"
 	"log"
 	"net/mail"
-	"net/smtp"
 	"os"
+	"strings"
 
+	message "github.com/emersion/go-message"
 	_ "github.com/go-sql-driver/mysql"
 )
 
 func main() {
 	// Перенаправление логов в файл
 	// создать файл лога, установить права доступа
-	l, err := os.OpenFile("/var/log/klshmail.log", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0644)
+	l, err := os.OpenFile("./klshmail.log", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0644)
+	// l, err := os.OpenFile("/var/log/klshmail.log", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0644)
 	logFatal(err)
 	defer l.Close()
 
@@ -33,8 +36,14 @@ func main() {
 		"References",
 	}
 
+	r, err := os.Open("./processor/testmsg.eml")
+	if err != nil {
+		log.Fatal(err)
+	}
+	m, err := message.Read(r)
+
 	// Читаем сообщение из стандартного ввода
-	m, err := mail.ReadMessage(os.Stdin)
+	// m, err := message.Read(os.Stdin)
 	logFatal(err)
 	log.Println("New message accepted...")
 
@@ -96,57 +105,115 @@ func main() {
 	}
 
 	// Формирование заголовков нового сообщения
-	var newmessage string
+	// var newmessage string
+	var newHeader message.Header
+	newHeader = make(message.Header)
 
 	for _, k := range hh {
 		if h := m.Header.Get(k); h != "" {
-			newmessage += k + ": " + h + "\r\n"
+			newHeader.Set(k, h)
 		}
 	}
 
-	
-	from.Name = fmt.Sprintf("%s %s.%s (%s)", lprefix, fshort, lname, from.Address)
-	from.Address = to.Address
-	newmessage += fmt.Sprintf("From: %s\r\n", from.String())
-	newmessage += fmt.Sprintf("Reply-To: <%s>\r\n", from.Address)
-	newmessage += fmt.Sprintf("X-KLSH-Sender: %v\r\n", uid)
-	newmessage += "\r\n"
+	sender := new(mail.Address)
+	sender.Name = from.Name
+	sender.Address = from.Address
 
-	// Подключение к SMTP серверу
-	c, err := smtp.Dial("127.0.0.1:25")
+	from.Name = fmt.Sprintf("%", "TEST: Тестовая рассылка")
+	from.Address = to.Address
+	newHeader.Set("From", from.String())
+	newHeader.Set("Reply-To", to.Address)
+	newHeader.Set("X-KLSH-Sender", "")
+
+	var b bytes.Buffer
+	w, err := message.CreateWriter(&b, m.Header)
 	if err != nil {
-		log.Println("SMTP connection error")
 		log.Fatal(err)
 	}
-	defer c.Close()
 
-	// Отправка сообщения
-	c.Mail(to.Address)
-	c.Rcpt(fmt.Sprintf("%v@klshmail", lid))
-
-	wc, err := c.Data()
-	logFatal(err)
-	defer wc.Close()
-
-	// Отправка заголовков сообщения
-	if _, err = wc.Write([]byte(newmessage)); err != nil {
-		log.Println("SMTP send headers error")
-		log.Fatalln(err)
+	if err := transform(w, m, sender); err != nil {
+		log.Fatal(err)
 	}
+	w.Close()
 
-	// Отправка тела сообщения
-	if _, err = io.Copy(wc, m.Body); err != nil {
-		log.Println("SMTP send body error")
-		log.Fatalln(err)
-	}
+	log.Println(b.String())
 
-	// Завершение работы
-	log.Println("Message processing done.")
+	// // Подключение к SMTP серверу
+	// c, err := smtp.Dial("127.0.0.1:25")
+	// if err != nil {
+	// 	log.Println("SMTP connection error")
+	// 	log.Fatal(err)
+	// }
+	// defer c.Close()
+	//
+	// // Отправка сообщения
+	// c.Mail(to.Address)
+	// c.Rcpt(fmt.Sprintf("%v@klshmail", lid))
+	//
+	// wc, err := c.Data()
+	// logFatal(err)
+	// defer wc.Close()
+	//
+	// // Отправка заголовков сообщения
+	// if _, err = wc.Write([]byte(newmessage)); err != nil {
+	// 	log.Println("SMTP send headers error")
+	// 	log.Fatalln(err)
+	// }
+	//
+	// // Отправка тела сообщения
+	// if _, err = io.Copy(wc, m.Body); err != nil {
+	// 	log.Println("SMTP send body error")
+	// 	log.Fatalln(err)
+	// }
+	//
+	// // Завершение работы
+	// log.Println("Message processing done.")
 
 }
 
 func logFatal(e error) {
 	if e != nil {
 		log.Fatalln(e)
+	}
+}
+
+const senderHtml string = `<p><b>Сообщение от:</b> %s &lt;<a href="mailto:%s">%s</a>&gt;<p>`
+const senderPlain string = "Сообщение от:  %s <%s>\n— — — — — —\n\n"
+
+func transform(w *message.Writer, e *message.Entity, sender *mail.Address) error {
+	if mr := e.MultipartReader(); mr != nil {
+		// This is a multipart entity, transform each of its parts
+		for {
+			p, err := mr.NextPart()
+			if err == io.EOF {
+				break
+			} else if err != nil {
+				return err
+			}
+
+			pw, err := w.CreatePart(p.Header)
+			if err != nil {
+				return err
+			}
+
+			if err := transform(pw, p, sender); err != nil {
+				return err
+			}
+
+			pw.Close()
+		}
+		return nil
+	} else {
+		body := e.Body
+		var newLine string
+		if strings.HasPrefix(e.Header.Get("Content-Type"), "text/plain") {
+			newLine = fmt.Sprintf(senderPlain, sender.Name, sender.Address)
+		}
+		if strings.HasPrefix(e.Header.Get("Content-Type"), "text/html") {
+			newLine = fmt.Sprintf(senderHtml, sender.Name, sender.Address, sender.Address)
+		}
+		body = io.MultiReader(strings.NewReader(newLine), body)
+		_, err := io.Copy(w, body)
+		return err
 	}
 }
