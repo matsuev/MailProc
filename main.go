@@ -126,7 +126,7 @@ func main() {
 	newHeader.Set("X-KLSH-Sender", "")
 
 	var b bytes.Buffer
-	w, err := message.CreateWriter(&b, m.Header)
+	w, err := message.CreateWriter(&b, newHeader)
 	if err != nil {
 		log.Fatal(err)
 	}
